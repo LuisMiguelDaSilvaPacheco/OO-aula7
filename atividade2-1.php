@@ -5,6 +5,12 @@ class Prato{
     private $quantidade;
     private $valorUnitario;
 
+    public function __toString()
+    {
+        $dados = "Descrição: $this->descricao \n Quantidade: $this->quantidade \n Valor unitário: $this->valorUnitario \n Valor Total: ". $this->getValorTotal() ."\n\n";
+        return $dados;
+    }
+
     public function getValorTotal(){
         $valorTotal = $this->quantidade * $this->valorUnitario;
         return $valorTotal;
@@ -54,4 +60,10 @@ for ($i=0; $i < 3; $i++) {
     $prato->setDescricao(readline('Diga a descrição do prato: '));
     $prato->setQuantidade(readline('Diga a quantiadade do prato: '));
     $prato->setValorUnitario(readline('Diga o valor unitário do prato: '));
+
+    array_push($pratos, $prato);
+}
+
+foreach ($pratos as $p) {
+    print $p;
 }
